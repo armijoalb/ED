@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.9.1"/>
+<title>ITERADORES EN CONJUNTO: Iterando sobre el conjunto</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">ITERADORES EN CONJUNTO
+   &#160;<span id="projectnumber">Practica3</span>
+   </div>
+   <div id="projectbrief">Practicar con el uso de  iteradores</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.9.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li class="current"><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="pages.html"><span>Páginas&#160;relacionadas</span></a></li>
+      <li><a href="annotated.html"><span>Clases</span></a></li>
+      <li><a href="files.html"><span>Archivos</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Buscar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Iterando sobre el conjunto </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="toc"><h3>Tabla de contenidos</h3>
+<ul><li class="level1"><a href="#intro_sec">Introducción</a></li>
+<li class="level1"><a href="#doc">Generar la Documentación.</a></li>
+<li class="level1"><a href="#iterar">Iteradores sobre conjunto.</a></li>
+<li class="level1"><a href="#ini">begin y end</a><ul><li class="level2"><a href="#descr">debin y end en description_iterator</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#modif">Modificación en la especificación de algunos métodos.</a></li>
+<li class="level1"><a href="#inter">Representacion del iterator</a></li>
+<li class="level1"><a href="#pido">SE PIDE</a><ul><li class="level2"><a href="#entrega">A ENTREGAR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><dl class="section version"><dt>Versión</dt><dd>v0 </dd></dl>
+<dl class="section author"><dt>Autor</dt><dd>Juan F. Huete</dd></dl>
+<h1><a class="anchor" id="intro_sec"></a>
+Introducción</h1>
+<p>En la práctica anterior hemos construido el conjunto, pero no estaba doctado de un mecanismo para poder iterar sobre las entradas que tiene almacenadas. Este mecanismo es esencialmente un iterador, que no es otra cosa que un objeto que se mueve a través de un contenedor (en la práctica nuestro conjunto) de <a class="el" href="classconjunto.html#a09cad766dd65de73e51eae21f9d22585" title="entrada permite hacer referencia al elemento almacenados en cada una de las posiciones del conjunto ...">conjunto::entrada</a> (entradas en el conjunto). La ventaja del uso del iterador es que nos proporciona un mecanismo estándar para acceder a los elementos de un contenedor, sin necesidad de conocer las particularidades internas de la implementación.</p>
+<h1><a class="anchor" id="doc"></a>
+Generar la Documentación.</h1>
+<p>Al igual que en la práctica anterior la documentación se entrega mediante un fichero pdf, así como mediante un fichero zip que contiene todos los fuentes junto a los archivos necesarios para generar la documentación (en latex y html). Para generar los ficheros html con la documentación de la misma es suficiente con ejecutar desde la línea de comandos</p>
+<div class="fragment"><div class="line">doxygen doxFileP3</div>
+</div><!-- fragment --><p>Como resultado nos genera dos directorios, uno con la documentación en html y el otro con la documentación en latex.</p>
+<p>Se entregam los ficheros de especificación nueva para el TDA conjunto. Estos ficheros incluyen algunas modificaciones que viene dadas por el uso de los iteradores.</p>
+<ul>
+<li><a class="el" href="conjunto_8h_source.html">conjunto.h</a> En el nuevo fichero <a class="el" href="conjunto_8h_source.html">conjunto.h</a> se entrega la nueva especificación de la clase conjunto, donde además se le añade la especificación del iterator. Se os pide implementar los distintos métodos así como el código necesario para demostrar el correcto funcionamiento del mismo. </li>
+<li><a class="el" href="conjunto_8hxx_source.html">conjunto.hxx</a> En este fichero se incluyen las cabeceras que hacen referencia al los distintos iteratorres, debiendo de añadir también las que hacen referencia al const_iterator.</li>
+</ul>
+<p>Pasamos a detallar cada una de las partes de la práctica.</p>
+<h1><a class="anchor" id="iterar"></a>
+Iteradores sobre conjunto.</h1>
+<p>Casi todos los contenedores disponen de una (o varias) clases asociada llamada iterator. Para poder asociar el iterador al contenedor una alternativa es añadir una clase anidada (una clase que se define dentro de la clase contenedora). Ambas clases están estrechamente relacionadas, por lo que es muy usual que se desee que tanto el contenedor como el iterador sean clases amigas. Así, cuando se crea una clase friend anidada es conveniente declarar primero el nombre de la clase y después definir la clase. Así evitamos que se confunda el compilador.</p>
+<div class="fragment"><div class="line"><span class="keyword">template</span></div>
+<div class="line"><span class="keyword">class </span><a class="code" href="classconjunto.html">conjunto</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">   <span class="keyword">class </span>iterator;  <span class="comment">//declaraciones previa</span></div>
+<div class="line">   <span class="keyword">class </span>const_iterator;</div>
+<div class="line">   <span class="keyword">class </span>arrest_iterator; <span class="comment">// Iterador sobre los delitos que implicaron un arresto (Arrest==true)</span></div>
+<div class="line">   <span class="keyword">class </span>const_arrest_iterator;</div>
+<div class="line">   <span class="keyword">class </span>description_iterator;  <span class="comment">// Iterador sobre los delitos que concuerdan con la descripcion</span></div>
+<div class="line">   <span class="keyword">class </span>const_description_iterator;</div>
+<div class="line">   ....</div>
+<div class="line">   iterator begin();  <span class="comment">// Podemos declarar el iterator porque ya lo hemos declarado previamente</span></div>
+<div class="line">   const_iterator cbegin();</div>
+<div class="line">   arrest_iterator abegin();</div>
+<div class="line">   const_arrest_iterator cabegin( );</div>
+<div class="line">   description_iterator dbegin(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp; descrp);</div>
+<div class="line">   const_description_iterator cdbegin(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp; descrip);</div>
+<div class="line">   </div>
+<div class="line"></div>
+<div class="line">   ....</div>
+<div class="line">   <span class="keyword">class </span>iterator {</div>
+<div class="line">      <span class="comment">//definicion del iterator</span></div>
+<div class="line">      <span class="keyword">public</span>:</div>
+<div class="line">        iterator();</div>
+<div class="line">        ....</div>
+<div class="line">      <span class="keyword">private</span>:</div>
+<div class="line">         <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classconjunto.html">conjunto</a>; <span class="comment">// declaramos conjunto como amigo de la clase</span></div>
+<div class="line">        ....</div>
+<div class="line"></div>
+<div class="line">    }; <span class="comment">// end de la clase iterator</span></div>
+<div class="line">   <span class="keyword">private</span>:</div>
+<div class="line">        <span class="keyword">friend</span> <span class="keyword">class </span>iterator; <span class="comment">// declaramos el iterador como amigo de la clase</span></div>
+<div class="line"></div>
+<div class="line">}; <span class="comment">// end de la clase conjunto</span></div>
+</div><!-- fragment --><p>Es importante notar que el tipo asociado al iterador es <a class="el" href="classconjunto_1_1iterator.html" title="class iterator forward iterador sobre el conjunto, LECTURA iterator() ,operator*(), operator++, operator++(int) operator=, operator==, operator!= ">conjunto::iterator</a> Por tanto, para declarar un conjunto y un iterator sobre dicho conjunto debemos hacer</p>
+<div class="fragment"><div class="line"><a class="code" href="classconjunto.html">conjunto</a> C;</div>
+<div class="line"><a class="code" href="classconjunto_1_1iterator.html">conjunto::iterator</a> it;</div>
+<div class="line"></div>
+<div class="line"><span class="keywordflow">for</span> (it = C.<a class="code" href="classconjunto.html#abc5ad601995f1e28789defd4ba28075c">begin</a>() ; it!=C.<a class="code" href="classconjunto.html#afaee64c1f0f6087a0ae17ab6741a0723">end</a>();++it) <span class="comment">//Itera sobre todos los elementos del conjunto.</span></div>
+<div class="line">  cout &lt;&lt; *it &lt;&lt; endl;</div>
+<div class="line"></div>
+<div class="line">conjunto::arrest_iterator ait; <span class="comment">//Itera sobre todos los crimenes que han tenido un arresto</span></div>
+<div class="line"><span class="keywordflow">for</span> (ait = C.abegin(); ait!= C.aend();++ait) </div>
+<div class="line">  cout &lt;&lt; *it &lt;&lt; endl;</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classconjunto_1_1description__iterator.html">conjunto::description_iterator</a> dit, dit2;  <span class="comment">//Itera sobre los elementos relacionados con BATTERY, i.e., BATTERY esta dentro de la descripcion</span></div>
+<div class="line"><span class="keywordflow">for</span> (dit = C.<a class="code" href="classconjunto.html#ac40bafea5d9dc529c96cf0e5977100c6">dbegin</a>(<span class="stringliteral">&quot;BATTERY&quot;</span>); dit!= C.<a class="code" href="classconjunto.html#aaff3013d49c52c4d3177168338725756">dend</a>();++dit) </div>
+<div class="line">  cout &lt;&lt; *it &lt;&lt; endl;</div>
+<div class="line"></div>
+<div class="line">dit2 = C.<a class="code" href="classconjunto.html#ac40bafea5d9dc529c96cf0e5977100c6">dbegin</a>(<span class="stringliteral">&quot;FINANCIAL&quot;</span>);  <span class="comment">// Iteraria solo sobre los elementos relacionados con FINANCIAL</span></div>
+</div><!-- fragment --><h1><a class="anchor" id="ini"></a>
+begin y end</h1>
+<p>Para poder iterar sobre los elementos del contenedor, debemos dotarlo de dos nuevos métodos (que siguiendo en estándar de la Standard Template Library llamaremos begin y end, en sus distintos formatos begin devuelve un iterator que apunta al primer elemento del contenedor (primer crimen que satisface las condiciones por las que se itera), mientras que end (en sus distintas versiones por su parte nos devuelve un iterator que apunta «al final» del contenedor. Es importante recordar que la posición final del contenedor no es una posición válida del mismo, esto es, no hay ningún elemento en dicha posición (es conveniente pensar que es la posición siguiente al último elemento del contenedor). Por ello, no es correcto dereferenciar el elemento alojado en dicha posición ( *end() ).</p>
+<p>Además podemos ver el uso de paréntesis para acceder a los elementos (*it).getID(). En este caso, si hacemos *it.getID, dada la precedencia de los operadores, primero se evaluaría el operador "." </p><div class="fragment"><div class="line">(*it).getID() <span class="comment">// Correncto</span></div>
+<div class="line">*it.getID() <span class="comment">// Incorrecto, primero evalua it.getID()</span></div>
+</div><!-- fragment --><p>Además del begin y end que devuelven el iterator, y siguiendo la filosofía del estándar c++11, implementaremos dos métodos, el cbegin y el cend que devuelven los const_iterator</p>
+<div class="fragment"><div class="line"><a class="code" href="classconjunto_1_1const__iterator.html">conjunto::const_iterator</a> c_it = dic.cbegin();</div>
+</div><!-- fragment --><h2><a class="anchor" id="descr"></a>
+debin y end en description_iterator</h2>
+<p>En esta práctica debemos destacar el comportamiento del description_iterator. Dicho iterador nos permitirá iterar sobre todos los elementos que contengan una determinada subcadena como parte de la descripción. Para ello, debemos indicarle al iterador sobre que subcadena debe iterar, esto lo haremos mediante el método dbegin() (o cdbegin()) que recibirán como parámetro de entrada dicha cadena.</p>
+<div class="fragment"><div class="line">@brief devolver primera posicion del elemento que empareja con la descripcion descr</div>
+<div class="line">@param[in] descr descripcion de buscamos</div>
+<div class="line">@<span class="keywordflow">return</span> un iterador que apunta a la primera posicion, el emparejamiento se hace teniendo en cuenta que descr debe ser una subcadena de la descripción del delito.</div>
+<div class="line"></div>
+<div class="line">conjunto::description_iterator <a class="code" href="classconjunto.html#ac40bafea5d9dc529c96cf0e5977100c6">conjunto::dbegin</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp; descr) <span class="keyword">const</span>;</div>
+</div><!-- fragment --><p>El método end() nos debe devolver un iterador que apunta a la posición final del mismo, en este caso dicho iterador puede coincider con el end() del vector&lt;crimenes&gt;</p>
+<h1><a class="anchor" id="modif"></a>
+Modificación en la especificación de algunos métodos.</h1>
+<p>Al permitir el uso de iteradores hay métodos de la clase conjunto que ya no tendrían sentido tal y como lo estaban previamente definidos.</p>
+<ul>
+<li>pair&lt; conjunto::entrada, bool &gt; find (const long int &amp;id) const ;</li>
+</ul>
+<p>En este caso, lo podemos modificar para que busca una entrada en el conjunto. Si la encuentra devuelve el iterador que apunta a la entrada, en caso contrario devuelve end(). </p><div class="fragment"><div class="line">  <a class="code" href="classconjunto_1_1iterator.html">conjunto::iterator</a>  <a class="code" href="classconjunto.html#a2459d07b15a25a474f1be8dc0038feb5">conjunto::find</a>( <span class="keyword">const</span> Key &amp; s) ;</div>
+<div class="line">....</div>
+<div class="line">Ejemplo de uso:</div>
+<div class="line"><a class="code" href="classconjunto_1_1iterator.html">conjunto::iterator</a> it;</div>
+<div class="line">it = C.<a class="code" href="classconjunto.html#a2459d07b15a25a474f1be8dc0038feb5">find</a>(3456);</div>
+<div class="line"><span class="keywordflow">if</span> (it == C.<a class="code" href="classconjunto.html#afaee64c1f0f6087a0ae17ab6741a0723">end</a>()) cout &lt;&lt; <span class="stringliteral">&quot;No esta &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="keywordflow">else</span> cout &lt;&lt; <span class="stringliteral">&quot;Delito &quot;</span>&lt;&lt; (*it) &lt;&lt; endl;</div>
+</div><!-- fragment --><ul>
+<li><a class="el" href="classconjunto_1_1const__iterator.html" title="class const_iterator forward iterador constante sobre el diccionario, Lectura const_iterator ...">conjunto::const_iterator</a> <a class="el" href="classconjunto.html#a2459d07b15a25a474f1be8dc0038feb5" title="busca un crimen en el conjunto ">conjunto::find( const long int &amp;id ) const</a>;</li>
+</ul>
+<p>El comportamiento es similar al anterior pero en este caso devuelve un iterador constante.</p>
+<h1><a class="anchor" id="inter"></a>
+Representacion del iterator</h1>
+<p>Un iterator de la clase conjunto nos debe permitir el acceso a los datos almacenados el en conjunto propiamente dicho. Una primera alternativa sería representar el iterator como un iterador sobre el vector, esto es</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="classconjunto.html">conjunto</a>{</div>
+<div class="line">....</div>
+<div class="line">  <span class="keyword">class </span>iterator {</div>
+<div class="line">    ....</div>
+<div class="line">     <a class="code" href="classconjunto.html#a09cad766dd65de73e51eae21f9d22585">entrada</a> &amp; operator*(); <span class="comment">// NO seria correcto</span></div>
+<div class="line">    ......</div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">    vector&lt;entrada&gt;::iterator it_v; <span class="comment">// Puntero a la entrada del vector.</span></div>
+<div class="line">   };</div>
+<div class="line">};</div>
+</div><!-- fragment --><p> Sin embargo, con esta representación sería posible violar el invariante de la representación, pues el usuario de la clase podría modificar el contenido de la clave ejecutando</p>
+<div class="fragment"><div class="line">...</div>
+<div class="line">it = C.<a class="code" href="classconjunto.html#a2459d07b15a25a474f1be8dc0038feb5">find</a>(1234);</div>
+<div class="line"><span class="keywordflow">if</span> (it == Dic.end()) cout &lt;&lt; <span class="stringliteral">&quot;No esta &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="keywordflow">else</span> {</div>
+<div class="line"> (*it).setID(22222);</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Esto nos daría problemas pues estaríamos modificando la clase, y particularmente al asumir los datos ordenados, el conjunto podría dejar de estar ordenado, no cumpliría el invariante de la representación. A partir de este momento las operaciones de búsqueda e inserción dejarían de funcionar correctamente.</p>
+<p>Para solucionar el problema es necesario que todos los iteradores del conjunto devuelvan una referencia constante a los elementos almacenado en el mismo</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="classconjunto.html">conjunto</a>{</div>
+<div class="line"></div>
+<div class="line">....</div>
+<div class="line">  <span class="keyword">class </span>iterator {</div>
+<div class="line">    ....</div>
+<div class="line">    <span class="keyword">const</span> <a class="code" href="classconjunto.html#a09cad766dd65de73e51eae21f9d22585">entrada</a> &amp; operator*();</div>
+<div class="line">    ......</div>
+<div class="line">    <span class="keyword">private</span>:</div>
+<div class="line">    ; <span class="comment">// Puntero a la entrada del vector.</span></div>
+<div class="line">   };</div>
+<div class="line">....</div>
+<div class="line">  <span class="keyword">class </span>const_iterator {</div>
+<div class="line">     .....</div>
+<div class="line">     <span class="keyword">const</span> <a class="code" href="classconjunto.html#a09cad766dd65de73e51eae21f9d22585">entrada</a> &amp; operator*();</div>
+<div class="line">     ....</div>
+<div class="line">     <span class="keyword">private</span>:</div>
+<div class="line">     ....</div>
+<div class="line">};</div>
+</div><!-- fragment --><h1><a class="anchor" id="pido"></a>
+SE PIDE</h1>
+<p>En concreto se pide implementar los métodos asociados a los iteradores de la clase conjunto.</p>
+<p>En este caso, para realizar la práctica, el alumno deberá modificar los ficheros de implementación (.hxx).</p>
+<p>De igual forma se debe modificar el fichero prueba.cpp de manera que se demuestre el correcto comportamiento del conjunto cuando se instancia con distintos tipos.</p>
+<h2><a class="anchor" id="entrega"></a>
+A ENTREGAR</h2>
+<p>El alumno debe entregar los siguientes ficheros, con las correciones necesarias para poder trabajar </p><ul>
+<li>fecha.h </li>
+<li>fecha.hxx </li>
+<li>crimen.h </li>
+<li>crimen.hxx </li>
+<li><a class="el" href="conjunto_8h_source.html">conjunto.h</a> Especificación del TDA conjunto. </li>
+<li><a class="el" href="conjunto_8hxx_source.html">conjunto.hxx</a> segunda versión del conjunto. </li>
+<li>prueba.cpp fichero de prueba del conjunto donde se incluyen los métodos que trabajan sobre meteorito</li>
+</ul>
+<p>Dicha entrega tiene como límite el Viernes 13 de Noviembre. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado el Martes, 10 de Noviembre de 2015 18:25:27 para ITERADORES EN CONJUNTO por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.9.1
+</small></address>
+</body>
+</html>
